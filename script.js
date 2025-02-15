@@ -46,19 +46,23 @@ const restaurant = {
   },
 };
 
-// Property KEYS
-const properties = Object.keys(restaurant.openingHours);
+// Sets
 
-for (const day of properties) {
-  console.log(day);
-}
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
 
-// Property VALUES
-const values = Object.values(restaurant.openingHours);
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+console.log(ordersSet);
 
-// Entire Object
-const entries = Object.entries(restaurant.openingHours);
+ordersSet.clear();
 
-for (const [key, { open, close }] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+for (const order of ordersSet) console.log(order);
