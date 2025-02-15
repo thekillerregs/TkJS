@@ -46,26 +46,29 @@ const restaurant = {
   },
 };
 
-// Sets
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
 
-const ordersSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Pizza',
-  'Risotto',
-  'Pasta',
-  'Pizza',
-]);
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
 
-// Maps
-const rest = new Map();
-rest.set('name', 'Classico Italiano');
+console.log(airline.slice(4));
 
-// Convert object to map
-const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(airline.slice(4, 7));
 
-// Convert map to array
-const arrayMap = [...hoursMap];
-const arrayKey = [...hoursMap.keys()];
-// const arrayEntries = [...hoursMap.entries()]; Equal to regular spread.
-const arrayValues = [...hoursMap.values()];
+console.log(airline.slice(4, -1));
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+airline.trim();
+
+const priceGB = '288,97E';
+const priceUS = priceGB.replace('E', '$');
+
+const heyHey = 'Hey Hey!';
+const hiHey = heyHey.replace('Hey', 'Hi');
+const hiHi = heyHey.replaceAll('Hey', 'Hi');
+const hiHi2 = heyHey.replace(/Hey/g, 'Hi');
+
+//startsWith, endsWith, includes, split, join, padStart, padEnd, repeat
