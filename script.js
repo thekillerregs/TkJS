@@ -66,3 +66,14 @@ console.log(ordersSet);
 ordersSet.clear();
 
 for (const order of ordersSet) console.log(order);
+
+// ES 2025 Methods
+
+// Elements that are present in both Sets
+const commonFoods = italianFoods.intersection(mexicanFoods);
+
+// Elements of both sets
+const allFoods = italianFoods.union(mexicanFoods);
+
+// Removes elements common to both sets
+const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
