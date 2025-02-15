@@ -77,3 +77,6 @@ const allFoods = italianFoods.union(mexicanFoods);
 
 // Removes elements common to both sets
 const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+
+// Only elements that are EXCLUSIVE to their own Set.
+const uniqueFoods = italianFoods.symmetricDifference(mexicanFoods);
