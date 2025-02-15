@@ -57,26 +57,15 @@ const ordersSet = new Set([
   'Pizza',
 ]);
 
-console.log(ordersSet.size);
-console.log(ordersSet.has('Pizza'));
-ordersSet.add('Garlic Bread');
-ordersSet.delete('Risotto');
-console.log(ordersSet);
+// Maps
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
 
-ordersSet.clear();
+rest.get('name');
 
-for (const order of ordersSet) console.log(order);
+console.log(rest.has('name'));
 
-// ES 2025 Methods
+rest.delete('name');
+console.log(rest.size);
 
-// Elements that are present in both Sets
-const commonFoods = italianFoods.intersection(mexicanFoods);
-
-// Elements of both sets
-const allFoods = italianFoods.union(mexicanFoods);
-
-// Removes elements common to both sets
-const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
-
-// Only elements that are EXCLUSIVE to their own Set.
-const uniqueFoods = italianFoods.symmetricDifference(mexicanFoods);
+rest.clear();
