@@ -61,11 +61,11 @@ const ordersSet = new Set([
 const rest = new Map();
 rest.set('name', 'Classico Italiano');
 
-rest.get('name');
+// Convert object to map
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
 
-console.log(rest.has('name'));
-
-rest.delete('name');
-console.log(rest.size);
-
-rest.clear();
+// Convert map to array
+const arrayMap = [...hoursMap];
+const arrayKey = [...hoursMap.keys()];
+// const arrayEntries = [...hoursMap.entries()]; Equal to regular spread.
+const arrayValues = [...hoursMap.values()];
