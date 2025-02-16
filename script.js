@@ -252,9 +252,14 @@ btnSort.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
+// Create a date
+const christmas = new Date('December 24, 2015');
+console.log(new Date(account1.movementsDates[0]));
 
-// BigInt
-console.log(48383838438438438438438483483483483n);
-console.log(BigInt(12312312321321321));
+// Months on JS work on a 0-11 basis
+console.log(2037, 10, 19, 15, 23, 5);
+
+console.log(new Date(0));
+
+// 3 days from now
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
