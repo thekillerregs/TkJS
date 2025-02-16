@@ -252,12 +252,5 @@ btnSort.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-console.log(Math.sqrt(25));
-console.log(Math.max(5, '23'));
-console.log(Math.min(5, 10));
-console.log(Math.PI);
-Math.trunc((Math.random() * 6) + 1);
-
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-randomInt(0, 10);
+// ES 2020 Numeric Separators
+const diameter = 287_460_000_000;
