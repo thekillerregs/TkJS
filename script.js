@@ -252,5 +252,9 @@ btnSort.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// ES 2020 Numeric Separators
-const diameter = 287_460_000_000;
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+// BigInt
+console.log(48383838438438438438438483483483483n);
+console.log(BigInt(12312312321321321));
