@@ -8,6 +8,12 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
+const nav = document.querySelector('.nav');
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
 const openModal = function(e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -43,9 +49,6 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
 );
 
 // Tabbed Component
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabsContent = document.querySelectorAll('.operations__content');
 
 tabsContainer.addEventListener('click', function(e) {
   const clicked = e.target.closest('.operations__tab');
@@ -60,12 +63,30 @@ tabsContainer.addEventListener('click', function(e) {
   document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 });
 
-const header = document.querySelector('.header');
+// Menu fade animation
+const handleHover = function(e) {
+  const target = e.target;
+
+  if (!target.classList.contains('nav__link'))
+    return;
+
+  const siblings = target.closest('.nav').querySelectorAll('.nav__link');
+  const logo = target.closest('.nav').querySelector('.img');
+
+  siblings.forEach(el => {
+    if (el !== target) el.style.opacity = this;
+  });
+  logo.style.opacity = this;
+};
+
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
 
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
+const header = document.querySelector('.header');
 header.append(message);
 
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
