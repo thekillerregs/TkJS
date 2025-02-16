@@ -73,14 +73,6 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const x = new Array(7);
-console.log(x.map(() => 5));
-
-x.fill(1, 3, 5);
-console.log(x);
-
-const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
-
-const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// toReversed, toSorted, etc, not changing the underlying array
+const reversedMovements = movements.toReversed();
 /////////////////////////////////////////////////
