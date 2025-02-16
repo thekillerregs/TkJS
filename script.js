@@ -73,10 +73,12 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-// anyMatch
-const anyDeposits = movements.some(mov => mov > 0);
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
 
-// allMatch
-const allDeposits = movements.every(mov => mov > 0);
+const arrDeep = [[[1, 2], 3][4, [5, 6]], 7, 8];
+console.log(arr.flat(2));
 
+const overallBalance = accounts.flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
 /////////////////////////////////////////////////
