@@ -51,7 +51,7 @@ console.log(document.getElementsByClassName('btn'));
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 //message.textContent = 'We use cookies for improved functionality and analytics.'
-message.innerHTML = 'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
 // Element moves, doesn't stay at two places at the same time.
 //header.prepend(message);
@@ -66,3 +66,49 @@ document.querySelector('.btn--close-cookie').addEventListener('click', () => {
   // message.remove();
   message.parentElement.removeChild(message);
 });
+
+// Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+// We can only log styles we've set ourselves
+console.log(message.style.height);
+console.log(message.style.backgroundColor);
+
+// Now it works
+console.log(getComputedStyle(message).height);
+
+// Setting css variables
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+// JavaScript automatically adds the properties that are supposed to be on the specific type of element, mannualy added ones won't be retrieved
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+
+logo.alt = 'Beautiful minimalist logo';
+
+// Retrieving custom attribute from DOM
+console.log(logo.getAttribute('designer'));
+
+console.log(logo.src);
+// logo.src points to absolute URL, get path this way:
+logo.getAttribute('src');
+
+const link = document.querySelector('.nav__link--btn');
+
+// Absolute vs Path
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+// Data attributes (insert attribute that starts with "data" in the HTML), dash -> camelcase
+console.log(logo.dataset.versionNumber);
+
+// Classes
+logo.classList.add('c');
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
+
+// Don't use
+// logo.className = 'a'
