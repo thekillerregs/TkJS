@@ -14,6 +14,9 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
 const openModal = function(e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -82,6 +85,17 @@ const handleHover = function(e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+// Sticky navigation
+const initialCoords = section1.getBoundingClientRect();
+
+// scroll event fires all the time and results in poor performance
+window.addEventListener('scroll', function(e) {
+  if (window.scrollY > initialCoords.top)
+    nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
+
+// Cookie ok check
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
@@ -95,9 +109,6 @@ document.querySelector('.btn--close-cookie').addEventListener('click', () => {
 
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', (e) =>
   section1.scrollIntoView({ behavior: 'smooth' })
