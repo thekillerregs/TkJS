@@ -104,11 +104,30 @@ console.log(link.getAttribute('href'));
 // Data attributes (insert attribute that starts with "data" in the HTML), dash -> camelcase
 console.log(logo.dataset.versionNumber);
 
-// Classes
+/* Classes
 logo.classList.add('c');
 logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
+Don't use
+logo.className = 'a'
+*/
 
-// Don't use
-// logo.className = 'a'
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', (e) => {
+  const s1coords = section1.getBoundingClientRect();
+
+  /* Old way
+  window.scrollTo({
+    left: s1coords.left + window.pageXOffset,
+    top: s1coords.top + window.pageYOffset,
+    behavior: 'smooth'
+  });
+   */
+
+  // Modern Way
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
