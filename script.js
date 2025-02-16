@@ -155,6 +155,17 @@ const updateUI = function(acc) {
 // Event handlers
 let currentAccount;
 
+// Experimenting API
+const now = new Date();
+labelDate.textContent = new Intl.DateTimeFormat(currentAccount?.locale || 'en-US', {
+  hour: 'numeric',
+  minute: 'numeric',
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+  weekday: 'long'
+}).format(now);
+
 btnLogin.addEventListener('click', function(e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -252,14 +263,3 @@ btnSort.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// Create a date
-const christmas = new Date('December 24, 2015');
-console.log(new Date(account1.movementsDates[0]));
-
-// Months on JS work on a 0-11 basis
-console.log(2037, 10, 19, 15, 23, 5);
-
-console.log(new Date(0));
-
-// 3 days from now
-console.log(new Date(3 * 24 * 60 * 60 * 1000));
