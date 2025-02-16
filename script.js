@@ -35,7 +35,6 @@ document.querySelector('.nav__links').addEventListener('click', function(e) {
     console.log(e.target);
     e.preventDefault();
 
-    // Matching Strategy
     if (e.target.classList.contains('nav__link')) {
       console.log('Link');
       const id = e.target.getAttribute('href');
@@ -54,13 +53,11 @@ message.innerHTML = 'We use cookies for improved functionality and analytics. <b
 
 header.append(message);
 
-// Deleting elements
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
   // message.remove();
   message.parentElement.removeChild(message);
 });
 
-// Styles
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
 
@@ -71,5 +68,27 @@ btnScrollTo.addEventListener('click', (e) =>
   section1.scrollIntoView({ behavior: 'smooth' })
 );
 
+const h1 = document.querySelector('h1');
 
+//Going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
 
+//All "children"
+console.log(h1.childNodes);
+
+//HTML Collection, direct children
+console.log(h1.children);
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'white';
+
+// Going upwards:
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+// Closest parent element or element himself
+h1.closest('.header').style.background = 'var(--gradient-secondary';
+
+// Going sideways
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
