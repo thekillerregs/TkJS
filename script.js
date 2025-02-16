@@ -252,11 +252,12 @@ btnSort.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// Parsing
-console.log(Number.parseInt('30px', 10));
-console.log(Number.parseFloat('2.5rem'));
+console.log(Math.sqrt(25));
+console.log(Math.max(5, '23'));
+console.log(Math.min(5, 10));
+console.log(Math.PI);
+Math.trunc((Math.random() * 6) + 1);
 
-// isNaN
-console.log(Number.isNaN(20));
-// isFinite
-console.log(Number.isFinite(20));
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+randomInt(0, 10);
