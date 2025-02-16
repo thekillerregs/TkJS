@@ -75,25 +75,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-let arr = ['a', 'b', 'c', 'd', 'e'];
-
-// Slice
-console.log(arr.slice(2)); // Doesn't mutate the original array
-console.log(arr.slice(2, 4));
-console.log(arr.slice(-2));
-console.log(arr.slice(1, -2));
-console.log(arr.slice());
-console.log(...arr);
-
-// Splice
-arr.splice(1, 2); // Mutates the original array
-
-// Reverse
-let arr2 = ['j', 'i', 'h', 'g', 'f'];
-console.log(arr2.reverse()); // Mutates the original array
-
-// Concat
-const letters = arr.concat(arr2); // Doesn't mutate original array
-
-// Join
-console.log(letters.join(' - '));
+// At method
+const arr = [23, 11, 64];
+console.log(arr.at(0)); // Same thing as indexing with arr[0]
+console.log(arr.at(-1)); // Allows for negative index searching
