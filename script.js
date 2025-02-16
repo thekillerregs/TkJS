@@ -73,9 +73,11 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+movements.forEach(function(movement, index, array) {
+  if (movement > 0)
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  else
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+});
 
-// At method
-const arr = [23, 11, 64];
-console.log(arr.at(0)); // Same thing as indexing with arr[0]
-console.log(arr.at(-1)); // Allows for negative index searching
+/////////////////////////////////////////////////
