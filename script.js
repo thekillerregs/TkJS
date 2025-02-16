@@ -1,17 +1,17 @@
 'use strict';
 
-const oneWord = function(str) {
-  return str.replaceAll(' ', '').toLowerCase();
+const greet = function(greeting) {
+  return function(name) {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-const upperFirstWord = function(str) {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-};
+const greeterHey = greet('Hey');
+greeterHey('Jonas');
+greeterHey('Steven');
 
-const transformer = function(str, fn) {
-  console.log(`Transformed String: ${fn(str)}`);
-  console.log(`Transformed by: ${fn.name}`);
-};
+greet('Hello')('Jonas');
 
-transformer('JavaScript is the best!', upperFirstWord);
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArr('Hi')('Jonas');
