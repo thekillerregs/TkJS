@@ -17,6 +17,8 @@ const tabsContent = document.querySelectorAll('.operations__content');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
+const header = document.querySelector('.header');
+
 const openModal = function(e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -86,21 +88,30 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 // Sticky navigation
-const initialCoords = section1.getBoundingClientRect();
+const navHeight = nav.getBoundingClientRect().height;
 
-// scroll event fires all the time and results in poor performance
-window.addEventListener('scroll', function(e) {
-  if (window.scrollY > initialCoords.top)
+const stickyNav = function(entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting)
     nav.classList.add('sticky');
   else nav.classList.remove('sticky');
-});
+};
+
+const headerObserver = new IntersectionObserver(
+  stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px` // Only supports pixels unit
+  }
+);
+headerObserver.observe(header);
 
 // Cookie ok check
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML = 'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
-const header = document.querySelector('.header');
 header.append(message);
 
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
