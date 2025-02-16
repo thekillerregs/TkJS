@@ -73,10 +73,10 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const firstWithdrawal = movements.find(mov => mov < 0);
-const firstWithdrawalIndex = movements.findIndex(mov => mov < 0);
+// anyMatch
+const anyDeposits = movements.some(mov => mov > 0);
 
-const lastWithdrawal = movements.findLast(mov => mov < 0);
-const lastWithdrawalIndex = movements.findLastIndex(mov => mov < 0);
+// allMatch
+const allDeposits = movements.every(mov => mov > 0);
 
 /////////////////////////////////////////////////
