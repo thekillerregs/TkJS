@@ -32,18 +32,33 @@ document.addEventListener('keydown', function(e) {
 
 // Page Navigation
 document.querySelector('.nav__links').addEventListener('click', function(e) {
-    console.log(e.target);
     e.preventDefault();
 
-    if (e.target.classList.contains('nav__link')) {
-      console.log('Link');
-      const id = e.target.getAttribute('href');
-      console.log(id);
-      document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-    }
+    if (!e.target.classList.contains('nav__link'))
+      return;
+
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 );
 
+// Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function(e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  if (!clicked) return;
+
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(tc => tc.classList.remove('operations__content--active'));
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+});
 
 const header = document.querySelector('.header');
 
@@ -54,7 +69,6 @@ message.innerHTML = 'We use cookies for improved functionality and analytics. <b
 header.append(message);
 
 document.querySelector('.btn--close-cookie').addEventListener('click', () => {
-  // message.remove();
   message.parentElement.removeChild(message);
 });
 
@@ -67,28 +81,3 @@ const section1 = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', (e) =>
   section1.scrollIntoView({ behavior: 'smooth' })
 );
-
-const h1 = document.querySelector('h1');
-
-//Going downwards: child
-console.log(h1.querySelectorAll('.highlight'));
-
-//All "children"
-console.log(h1.childNodes);
-
-//HTML Collection, direct children
-console.log(h1.children);
-
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'white';
-
-// Going upwards:
-console.log(h1.parentNode);
-console.log(h1.parentElement);
-
-// Closest parent element or element himself
-h1.closest('.header').style.background = 'var(--gradient-secondary';
-
-// Going sideways
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
