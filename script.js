@@ -1,78 +1,99 @@
 'use strict';
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  book(flightNum, name) {
-    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  }
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// BANKIST APP
+
+// Data
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111
 };
 
-lufthansa.book(239, 'Tk');
-lufthansa.book(635, 'Kt');
-
-const eurowings = {
-  name: 'Eurowings',
-  iataCode: 'EW',
-  bookings: []
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222
 };
 
-const book = lufthansa.book;
-
-// Call method
-book.call(eurowings, 23, 'Tk');
-console.log(eurowings);
-
-// Apply Method (replaced by call(this, ...data)
-const flightData = [583, 'George Cooper'];
-book.apply(eurowings, flightData);
-
-// Bind method
-const bookEW = book.bind(eurowings);
-bookEW(23, 'Steven Williams');
-
-// Binding args
-const bookEW23 = book.bind(eurowings, 23);
-bookEW23('Tkzudo');
-
-lufthansa.planes = 300;
-lufthansa.buyPlane = function() {
-  console.log(this);
-
-  this.planes++;
-  console.log(this.planes);
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333
 };
 
-document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
-
-// Partial Application
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.1, 200));
-
-const addVAT = addTax.bind(null, 0.23);
-
-// Immediately Invoked Function Expressions (IIFE)
-(function() {
-  console.log('Nao vai rodar dnv.');
-})();
-
-(() => console.log('Hey!'))();
-
-// Closures
-const secureBooking = function() {
-  let passengerCount = 0;
-
-  return function() {
-    passengerCount++;
-    console.log(`${passengerCount} passengers`);
-  };
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444
 };
 
-const booker = secureBooking();
+const accounts = [account1, account2, account3, account4];
 
-booker();
-booker();
-booker();
+// Elements
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
 
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
+
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
+
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling']
+]);
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// Slice
+console.log(arr.slice(2)); // Doesn't mutate the original array
+console.log(arr.slice(2, 4));
+console.log(arr.slice(-2));
+console.log(arr.slice(1, -2));
+console.log(arr.slice());
+console.log(...arr);
+
+// Splice
+arr.splice(1, 2); // Mutates the original array
+
+// Reverse
+let arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse()); // Mutates the original array
+
+// Concat
+const letters = arr.concat(arr2); // Doesn't mutate original array
+
+// Join
+console.log(letters.join(' - '));
