@@ -52,3 +52,8 @@ const addTax = (rate, value) => value + value * rate;
 console.log(addTax(0.1, 200));
 
 const addVAT = addTax.bind(null, 0.23);
+
+// Immediately Invoked Function Expressions (IIFE)
+(function() {
+  console.log('Nao vai rodar dnv.');
+})();
