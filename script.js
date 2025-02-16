@@ -263,11 +263,10 @@ btnSort.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// Formatting Numbers
-const num = 3884764.23;
-const options = {
-  style: 'unit',
-  unit: 'mile-per-hour'
-};
+const pizzaTimer = setTimeout((ing1) => {
+  console.log('Recebaaa ', ing1);
+}, 3000, 'olives');
 
-console.log('US: ', new Intl.NumberFormat('en-US', options).format(num));
+clearTimeout(pizzaTimer);
+
+const interval = setInterval(() => console.log('recebaa'), 1000);
