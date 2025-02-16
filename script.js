@@ -131,11 +131,14 @@ btnScrollTo.addEventListener('click', (e) => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-const h1 = document.querySelector('h1');
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-h1.addEventListener('mouseenter', () => alert('oiii'));
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-// Old School:
-//h1.onmouseenter = () => alert('oiii');
+document.querySelector('.nav__link').addEventListener('click', (e) => {
+  console.log('Link');
+  //e.stopPropagation();
+  // "true" setting enables listening in capturing phase
+}, true);
 
-//h1.removeEventListener
+
