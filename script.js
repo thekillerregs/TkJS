@@ -57,3 +57,5 @@ const addVAT = addTax.bind(null, 0.23);
 (function() {
   console.log('Nao vai rodar dnv.');
 })();
+
+(() => console.log('Hey!'))();
