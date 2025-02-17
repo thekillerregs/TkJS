@@ -150,3 +150,24 @@ message.style.width = '120%';
 btnScrollTo.addEventListener('click', (e) =>
   section1.scrollIntoView({ behavior: 'smooth' })
 );
+
+// Lazy loading images
+const imgTargets = document.querySelectorAll('img[data-src]'); //css selects only those with the data-src property
+
+const loadImg = function(entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting)
+    return;
+
+  entry.target.src = entry.target.dataset.src;
+  entry.target.addEventListener('load', () => entry.target.classList.remove('lazy-img'));
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px'
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
