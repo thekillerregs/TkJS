@@ -171,3 +171,18 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });
 
 imgTargets.forEach(img => imgObserver.observe(img));
+
+// DOM Lifecycle
+document.addEventListener('DOMContentLoaded', function(e) {
+  console.log('HTML Parsed and Dom tree built!');
+});
+
+window.addEventListener('load', function(e) {
+  console.log('Page Fully loaded!');
+});
+
+// When user is quitting
+window.addEventListener('beforeunload', function(e) {
+  e.preventDefault();
+  e.returnValue = 'message';
+});
