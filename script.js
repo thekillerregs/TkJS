@@ -1,20 +1,35 @@
 'use strict';
 
-const PersonProto = {
-  calcAge() {
-    console.log(2037);
-  },
+class Account {
 
-  init(firstName) {
-    this.firstName = firstName;
+  locale = navigator.language; //Public fields
+  bank = 'Bankist';
+  #movements = []; // Private field!
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.#pin = pin;
+
+    console.log('Acc open');
   }
-};
 
-const StudentProto = Object.create(PersonProto);
-StudentProto.init = function(firstName, course) {
-  PersonProto.init.call(this, firstName);
-  this.course = course;
-};
+  deposit(val) {
+    this.#movements.push(val);
+  }
 
-const tk2 = Object.create(StudentProto);
-tk2.init('tk', 'law');
+  withdraw(val) {
+    this.deposit(-val);
+  }
+
+  // Private method!
+  #approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.#approveLoan(val))
+      this.deposit(val);
+  }
+}
