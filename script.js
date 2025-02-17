@@ -38,4 +38,20 @@ class PersonCl {
   calcAge() {
     console.log(this.birthYear);
   }
+
+  get latest() {
+    return this.name.slice(-1).pop;
+  }
+
+  set latest(name) {
+    this.name = name;
+  }
+
+  static hey() {
+    console.log('OIIIIIIIII :3');
+  }
 }
+
+const tk = new PersonCl('tk', 2003);
+tk.latest = 'thekllerregs';
+console.log(tk.latest);
