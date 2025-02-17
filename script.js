@@ -55,3 +55,15 @@ class PersonCl {
 const tk = new PersonCl('tk', 2003);
 tk.latest = 'thekllerregs';
 console.log(tk.latest);
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+};
+
+const tk2 = Object.create(PersonProto);
+
+tk2.name = 'tk fofinho';
+tk.birthYear = 2003;
+tk2.calcAge();
