@@ -1,28 +1,40 @@
 'use strict';
 
-const Person = function(firstName, lastName) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-};
+class PersonCl {
+  constructor(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
+  }
 
-// Prototypes
-Person.prototype.calcAge = function() {
-  console.log(2003);
-};
+  calcAge() {
+    console.log(this.birthYear);
+  }
 
-const Student = function(firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear);
-  this.course = course;
-};
+  get latest() {
+    return this.name.slice(-1).pop;
+  }
 
-// Linking prototypes
-Student.prototype = Object.create(Person.prototype);
+  set latest(name) {
+    this.name = name;
+  }
 
-Student.prototype.introduce = function() {
-  console.log(`My name is ${this.firstName} and I study ${this.course}`);
-};
+  static hey() {
+    console.log('OIIIIIIIII :3');
+  }
+}
 
-const mike = new Student('Mike', 2020, 'Computer Science');
-mike.introduce();
+class StudentCl extends PersonCl {
+  constructor(name, birthYear, course) {
+    super(name, birthYear);
+    this.course = course;
+  }
 
+  introduce() {
+    console.log('oii');
+  }
+}
 
+const tk = new StudentCl('tk', 2003, 'law');
+
+tk.introduce();
+tk.calcAge();
